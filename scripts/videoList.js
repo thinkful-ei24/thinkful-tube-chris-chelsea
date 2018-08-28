@@ -8,18 +8,23 @@ const videoList = (function() {
   const generateListItem = function(video) {
     return `
       <li data-id="${video.id}">
-              <h3>${video.title}</h3>
+              <a target="_blank" href="https://www.youtube.com/watch?v=${
+                video.id
+              }">
               <img src="${video.thumbnail}"/>
+              <h3>${video.title}</h3>
+              </a>
             </li>
       `;
   };
   //decorate response function
   const decorateResponse = function(response) {
+    console.log(response);
     return response.items.map(item => {
       return {
         id: item.id.videoId,
         title: item.snippet.title,
-        thumbnail: item.snippet.thumbnails.default.url
+        thumbnail: item.snippet.thumbnails.medium.url
       };
     });
   };

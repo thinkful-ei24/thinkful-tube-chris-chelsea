@@ -1,12 +1,70 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-align: center;
+  font-family: 'Roboto', Arial, sans-serif;
 }
 
+/*form styles*/
+
+form input[type='text'] {
+  width: 400px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0 10px;
+  outline: none;
+}
+
+form input[type='submit'] {
+  background-color: hsl(3, 81.8%, 49.6%);
+  width: 75px;
+  height: 40px;
+  margin-left: 10px;
+  border-radius: 6px;
+  border: 1px solid hsl(3, 81.8%, 49.6%);
+  color: #fff;
+  text-transform: uppercase;
+  outline: none;
+}
+
+/*List styling for results*/
+
+.results {
+  width: 924px;
+  margin: 40px auto;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.results li {
+  margin: 10px 10px;
+  flex-basis: 288px;
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  min-height: 244px;
+}
+
+.results img {
+  max-width: 288px;
+  max-height: 160px;
+}
+
+.results a {
+  text-decoration: none;
+}
+
+.results h3 {
+  font-size: 0.75em;
+  color: #000;
+  padding: 10px 20px;
+  line-height: 1.5em;
+}

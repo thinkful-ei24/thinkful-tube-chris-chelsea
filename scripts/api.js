@@ -9,6 +9,7 @@ const Api = (function() {
     const query = {
       part: 'snippet',
       key: API_KEY,
+      maxResults: 50,
       q: searchTerm
     };
     $.getJSON(BASE_URL, query, callback);
