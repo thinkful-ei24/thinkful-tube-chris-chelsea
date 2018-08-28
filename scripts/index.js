@@ -1,4 +1,35 @@
 'use strict';
+
+const store = (function() {
+const videos = [];
+const setVideos = function(videos){
+ return this.videos;
+};
+
+return {
+videos,
+setVideos
+}
+})();
+
+const Api = (function(){
+const BASE_URL = 'https://www.googleapis.com/youtube/v3/search';
+const fetchVideos = function(searchTerm, callback){
+  const query = {
+    part: 'snippet',
+    key: API_KEY,
+    q: searchTerm
+  };
+  $.getJSON(BASE_URL, query, callback);
+};
+
+return {
+fetchVideos
+};
+})();
+
+
+
 const MOCK_DATA = {
   kind: 'youtube#searchListResponse',
   etag: '"XI7nbFXulYBIpL0ayR_gDh3eu1k/uOxbVTYys9VZqGEsjW5NUwImai0"',
@@ -197,9 +228,7 @@ const API_KEY = 'AIzaSyA0i_skrMX1fC5anAjTd_QV1jRRxwxSo14';
     thumbnail: 'https://img.youtube.com/some/thumbnail.jpg'
   }
 */
-const store = {
-  videos: []
-};
+
 
 // TASK: Add the Youtube Search API Base URL here:
 // Documentation is here: https://developers.google.com/youtube/v3/docs/search/list#usage
@@ -220,15 +249,6 @@ const BASE_URL = 'https://www.googleapis.com/youtube/v3/search';
 //
 // TEST IT! Execute this function and console log the results inside the callback.
 
-const fetchVideos = function(searchTerm, callback) {
-  const query = {
-    part: 'snippet',
-    key: API_KEY,
-    q: searchTerm
-  };
-
-  $.getJSON(BASE_URL, query, callback);
-};
 
 //TESTING fetchVideos by pushing in our params
 // fetchVideos('cats', callback => {
@@ -331,8 +351,8 @@ const handleFormSubmit = function() {
     const searchTerm = $('#search-term').val();
     event.target.reset();
 
-    fetchVideos(searchTerm, callback => {
-      const decoratedVideos = decorateResponse(callback);
+    fetchVideos(searchTerm, response => {
+      const decoratedVideos = decorateResponse(response);
       addVideosToStore(decoratedVideos);
       render();
     });
