@@ -1,5 +1,187 @@
 'use strict';
-
+const MOCK_DATA = {
+  kind: 'youtube#searchListResponse',
+  etag: '"XI7nbFXulYBIpL0ayR_gDh3eu1k/uOxbVTYys9VZqGEsjW5NUwImai0"',
+  nextPageToken: 'CAUQAA',
+  regionCode: 'US',
+  pageInfo: {
+    totalResults: 1000000,
+    resultsPerPage: 5
+  },
+  items: [
+    {
+      kind: 'youtube#searchResult',
+      etag: '"XI7nbFXulYBIpL0ayR_gDh3eu1k/3GvmmEApNX5dJzBymRzvcBvZGdQ"',
+      id: {
+        kind: 'youtube#video',
+        videoId: 'N2z5dSRkv_I'
+      },
+      snippet: {
+        publishedAt: '2018-08-26T11:00:04.000Z',
+        channelId: 'UC9obdDRxQkmn_4YpcBMTYLw',
+        title: "Bet you havent't LAUGHED THAT HARD before! - Super FUNNY CATS",
+        description:
+          'The funniest animals on the planet are definitely cats! They never fail to make us laugh and happy! This is the most impossible TRY NOT TO LAUGH challenge ...',
+        thumbnails: {
+          default: {
+            url: 'https://i.ytimg.com/vi/N2z5dSRkv_I/default.jpg',
+            width: 120,
+            height: 90
+          },
+          medium: {
+            url: 'https://i.ytimg.com/vi/N2z5dSRkv_I/mqdefault.jpg',
+            width: 320,
+            height: 180
+          },
+          high: {
+            url: 'https://i.ytimg.com/vi/N2z5dSRkv_I/hqdefault.jpg',
+            width: 480,
+            height: 360
+          }
+        },
+        channelTitle: 'Tiger FunnyWorks',
+        liveBroadcastContent: 'none'
+      }
+    },
+    {
+      kind: 'youtube#searchResult',
+      etag: '"XI7nbFXulYBIpL0ayR_gDh3eu1k/CIzHxn5Tg3A4s2nJ1YNkNe9bwj8"',
+      id: {
+        kind: 'youtube#video',
+        videoId: 'hY7m5jjJ9mM'
+      },
+      snippet: {
+        publishedAt: '2017-05-31T09:30:02.000Z',
+        channelId: 'UC9obdDRxQkmn_4YpcBMTYLw',
+        title: 'CATS will make you LAUGH YOUR HEAD OFF - Funny CAT compilation',
+        description:
+          'Cats are amazing creatures because they make us laugh all the time! Watching funny cats is the hardest try not to laugh challenge! Just look how all these cats ...',
+        thumbnails: {
+          default: {
+            url: 'https://i.ytimg.com/vi/hY7m5jjJ9mM/default.jpg',
+            width: 120,
+            height: 90
+          },
+          medium: {
+            url: 'https://i.ytimg.com/vi/hY7m5jjJ9mM/mqdefault.jpg',
+            width: 320,
+            height: 180
+          },
+          high: {
+            url: 'https://i.ytimg.com/vi/hY7m5jjJ9mM/hqdefault.jpg',
+            width: 480,
+            height: 360
+          }
+        },
+        channelTitle: 'Tiger FunnyWorks',
+        liveBroadcastContent: 'none'
+      }
+    },
+    {
+      kind: 'youtube#searchResult',
+      etag: '"XI7nbFXulYBIpL0ayR_gDh3eu1k/JkELFAyKQf3jC6ObuMsX4Hc3Hhw"',
+      id: {
+        kind: 'youtube#video',
+        videoId: 'Rmx1JGTX1yw'
+      },
+      snippet: {
+        publishedAt: '2018-07-26T11:00:05.000Z',
+        channelId: 'UC9obdDRxQkmn_4YpcBMTYLw',
+        title: 'Funniest CATS EVER - Die LAUGING NOW!',
+        description:
+          'Cats are the best pets and animals! Cats and kittens are so funny, they make us laugh and happy! They never fail to amuse us! This is the most impossible TRY ...',
+        thumbnails: {
+          default: {
+            url: 'https://i.ytimg.com/vi/Rmx1JGTX1yw/default.jpg',
+            width: 120,
+            height: 90
+          },
+          medium: {
+            url: 'https://i.ytimg.com/vi/Rmx1JGTX1yw/mqdefault.jpg',
+            width: 320,
+            height: 180
+          },
+          high: {
+            url: 'https://i.ytimg.com/vi/Rmx1JGTX1yw/hqdefault.jpg',
+            width: 480,
+            height: 360
+          }
+        },
+        channelTitle: 'Tiger FunnyWorks',
+        liveBroadcastContent: 'none'
+      }
+    },
+    {
+      kind: 'youtube#searchResult',
+      etag: '"XI7nbFXulYBIpL0ayR_gDh3eu1k/qT9xssHPIvatz74gf98V67GmP4s"',
+      id: {
+        kind: 'youtube#video',
+        videoId: 'uCLEq9V0-Yk'
+      },
+      snippet: {
+        publishedAt: '2018-05-17T13:02:36.000Z',
+        channelId: 'UCKy3MG7_If9KlVuvw3rPMfw',
+        title:
+          'SUPER WEIRD CATS that will totally CONFUSE YOU! - Extremely FUNNY CAT VIDEOS compilation',
+        description:
+          'Here are videos of super weird cats and kittens that will confuse you and at the end, most important, make you laugh! These cats are so super hilarious that I bet ...',
+        thumbnails: {
+          default: {
+            url: 'https://i.ytimg.com/vi/uCLEq9V0-Yk/default.jpg',
+            width: 120,
+            height: 90
+          },
+          medium: {
+            url: 'https://i.ytimg.com/vi/uCLEq9V0-Yk/mqdefault.jpg',
+            width: 320,
+            height: 180
+          },
+          high: {
+            url: 'https://i.ytimg.com/vi/uCLEq9V0-Yk/hqdefault.jpg',
+            width: 480,
+            height: 360
+          }
+        },
+        channelTitle: 'Tiger Productions',
+        liveBroadcastContent: 'none'
+      }
+    },
+    {
+      kind: 'youtube#searchResult',
+      etag: '"XI7nbFXulYBIpL0ayR_gDh3eu1k/2J8q77MF8IM0F88ttFhy4DodrqM"',
+      id: {
+        kind: 'youtube#video',
+        videoId: '-zzWoYIAv5I'
+      },
+      snippet: {
+        publishedAt: '2018-06-21T16:04:58.000Z',
+        channelId: 'UC9obdDRxQkmn_4YpcBMTYLw',
+        title: 'CATS make us LAUGH ALL THE TIME! - Ultra FUNNY CAT videos',
+        description:
+          'Ultra funny cats and kitten that will make you cry with laughter! Cats are the best animals, they make us laugh all the time! This is the hardest TRY NOT TO ...',
+        thumbnails: {
+          default: {
+            url: 'https://i.ytimg.com/vi/-zzWoYIAv5I/default.jpg',
+            width: 120,
+            height: 90
+          },
+          medium: {
+            url: 'https://i.ytimg.com/vi/-zzWoYIAv5I/mqdefault.jpg',
+            width: 320,
+            height: 180
+          },
+          high: {
+            url: 'https://i.ytimg.com/vi/-zzWoYIAv5I/hqdefault.jpg',
+            width: 480,
+            height: 360
+          }
+        },
+        channelTitle: 'Tiger FunnyWorks',
+        liveBroadcastContent: 'none'
+      }
+    }
+  ]
+};
 const API_KEY = 'AIzaSyA0i_skrMX1fC5anAjTd_QV1jRRxwxSo14';
 
 /*
@@ -16,13 +198,7 @@ const API_KEY = 'AIzaSyA0i_skrMX1fC5anAjTd_QV1jRRxwxSo14';
   }
 */
 const store = {
-  videos: [
-    {
-      id: '84375943',
-      title: 'Title',
-      thumbnail: 'https://something.com'
-    }
-  ]
+  videos: []
 };
 
 // TASK: Add the Youtube Search API Base URL here:
@@ -39,10 +215,6 @@ const BASE_URL = 'https://www.googleapis.com/youtube/v3/search';
 // TASK:
 // 1. Use `searchTerm` to construct the right query object based on the Youtube API docs
 //    - Refer to curriculum assignment for help with the required parameters
-
-//'?part=snippet&key=AIzaSyA0i_skrMX1fC5anAjTd_QV1jRRxwxSo14&q=cat';
-
-
 // 2. Make a getJSON call using the query object and sending the provided callback in
 //    as the last argument
 //
@@ -54,15 +226,14 @@ const fetchVideos = function(searchTerm, callback) {
     key: API_KEY,
     q: searchTerm
   };
-  
-  const MOCK_DATA = {};
-  $.getJSON(BASE_URL, query, callback => {
-    console.log(callback);
-  
-  });
+
+  $.getJSON(BASE_URL, query, callback);
 };
 
-fetchVideos('cats');
+//TESTING fetchVideos by pushing in our params
+// fetchVideos('cats', callback => {
+//   console.log(callback);
+// });
 
 /**
  * @function decorateResponse
@@ -71,6 +242,7 @@ fetchVideos('cats');
  * @param   {object} response - should match Youtube API response shape
  * @returns {array}
  */
+
 // TASK:
 // 1. Map through the response object's `items` array
 
@@ -85,11 +257,13 @@ const decorateResponse = function(response) {
     return {
       id: item.id.videoId,
       title: item.snippet.title,
-      thumbnail: item.snippet.thumbnails.default.url,
+      thumbnail: item.snippet.thumbnails.default.url
     };
   });
 };
-decorateResponse(MOCK_DATA);
+
+//decorateResponse(MOCK_DATA);
+
 /**
  * @function generateVideoItemHtml
  * Template function, creates an HTML string from a single decorated video object
@@ -107,8 +281,9 @@ const generateVideoItemHtml = function(video) {
   `;
 };
 
-console.log(generateVideoItemHtml(decoratedArrayOfVideos[1]));
-const decoratedArrayOfVideos = decorateResponse(MOCK_DATA);
+//const decoratedArrayOfVideos = decorateResponse(MOCK_DATA);
+//console.log(generateVideoItemHtml(decoratedArrayOfVideos[2]));
+
 /**
  * @function addVideosToStore
  * Store modification function to set decorated video objects
@@ -131,14 +306,9 @@ const addVideosToStore = function(videos) {
 // TEST IT!
 const render = function() {
   const htmlElements = store.videos.map(video => generateVideoItemHtml(video));
-$('.results').html(htmlElements);
+  $('.results').html(htmlElements);
 };
 
-fetchVideos('cats', response => {
-  const decoratedVideos = decorateResponse(response);
-  addVideosToStore(decoratedVideos);
-  render();
-});
 /**
  * @function handleFormSubmit
  * Adds form "submit" event listener that 1) initiates API call, 2) modifies store,
@@ -156,19 +326,18 @@ fetchVideos('cats', response => {
 //   g) Inside the callback, run the `render` function
 // TEST IT!
 const handleFormSubmit = function() {
-$('form').submit(event => {
-  event.preventDefault();
-  const searchTerm = ('#search-term').val();
-  event.target.reset();
+  $('form').submit(event => {
+    event.preventDefault();
+    const searchTerm = $('#search-term').val();
+    event.target.reset();
 
-  const fetchVideos = function(searchTerm, callback) {
-    const decoratedVideos = decorateResponse(response);
-    addVideosToStore(decoratedVideos);
-    render();
-    };
+    fetchVideos(searchTerm, callback => {
+      const decoratedVideos = decorateResponse(callback);
+      addVideosToStore(decoratedVideos);
+      render();
+    });
   });
 };
-
 
 // When DOM is ready:
 $(function() {
