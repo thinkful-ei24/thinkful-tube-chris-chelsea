@@ -1,6 +1,6 @@
 'use strict';
 
-const API_KEY = 'YOUR_KEY_HERE';
+const API_KEY = 'AIzaSyA0i_skrMX1fC5anAjTd_QV1jRRxwxSo14';
 
 /*
   We want our store to hold an array of "decorated" video objects - i.e. objects that
@@ -41,11 +41,7 @@ const BASE_URL = 'https://www.googleapis.com/youtube/v3/search';
 //    - Refer to curriculum assignment for help with the required parameters
 
 //'?part=snippet&key=AIzaSyA0i_skrMX1fC5anAjTd_QV1jRRxwxSo14&q=cat';
-const searchTerm = {
-  part: 'snippet',
-  key: 'AIzaSyA0i_skrMX1fC5anAjTd_QV1jRRxwxSo14',
-  q: 'cat'
-};
+
 
 // 2. Make a getJSON call using the query object and sending the provided callback in
 //    as the last argument
@@ -53,12 +49,20 @@ const searchTerm = {
 // TEST IT! Execute this function and console log the results inside the callback.
 
 const fetchVideos = function(searchTerm, callback) {
-  $.getJSON(BASE_URL, searchTerm, callback => {
+  const query = {
+    part: 'snippet',
+    key: API_KEY,
+    q: searchTerm
+  };
+  
+  const MOCK_DATA = {};
+  $.getJSON(BASE_URL, query, callback => {
     console.log(callback);
+  
   });
 };
 
-fetchVideos(searchTerm);
+fetchVideos('cats');
 
 /**
  * @function decorateResponse
@@ -69,14 +73,23 @@ fetchVideos(searchTerm);
  */
 // TASK:
 // 1. Map through the response object's `items` array
+
 // 2. Return an array of objects, where each object contains the keys `id`, `title`,
 //    `thumbnail` which each hold the appropriate values from the API item object. You
 //    WILL have to dig into several nested properties!
 //
 // TEST IT! Grab an example API response and send it into the function - make sure
 // you get back the object you want.
-const decorateResponse = function(response) {};
-
+const decorateResponse = function(response) {
+  return response.items.map(item => {
+    return {
+      id: item.id.videoId,
+      title: item.snippet.title,
+      thumbnail: item.snippet.thumbnails.default.url,
+    };
+  });
+};
+decorateResponse(MOCK_DATA);
 /**
  * @function generateVideoItemHtml
  * Template function, creates an HTML string from a single decorated video object
@@ -86,8 +99,16 @@ const decorateResponse = function(response) {};
 // TASK:
 // 1. Using the decorated object, return an HTML string containing all the expected
 // TEST IT!
-const generateVideoItemHtml = function(video) {};
+const generateVideoItemHtml = function(video) {
+  return `<li data-id="${video.id}">
+            <h3>${video.title}</h3>
+            <img src="${video.thumbnail}"/>
+          </li>
+  `;
+};
 
+console.log(generateVideoItemHtml(decoratedArrayOfVideos[1]));
+const decoratedArrayOfVideos = decorateResponse(MOCK_DATA);
 /**
  * @function addVideosToStore
  * Store modification function to set decorated video objects
@@ -96,7 +117,9 @@ const generateVideoItemHtml = function(video) {};
 // TASK:
 // 1. Set the received array as the value held in store.videos
 // TEST IT!
-const addVideosToStore = function(videos) {};
+const addVideosToStore = function(videos) {
+  store.videos = videos;
+};
 
 /**
  * @function render
@@ -106,8 +129,16 @@ const addVideosToStore = function(videos) {};
 // 1. Map through `store.videos`, sending each `video` through `generateVideoItemHtml`
 // 2. Add this array of DOM elements to the appropriate DOM element
 // TEST IT!
-const render = function() {};
+const render = function() {
+  const htmlElements = store.videos.map(video => generateVideoItemHtml(video));
+$('.results').html(htmlElements);
+};
 
+fetchVideos('cats', response => {
+  const decoratedVideos = decorateResponse(response);
+  addVideosToStore(decoratedVideos);
+  render();
+});
 /**
  * @function handleFormSubmit
  * Adds form "submit" event listener that 1) initiates API call, 2) modifies store,
@@ -124,10 +155,24 @@ const render = function() {};
 //      `addVideosToStore` function
 //   g) Inside the callback, run the `render` function
 // TEST IT!
-const handleFormSubmit = function() {};
+const handleFormSubmit = function() {
+$('form').submit(event => {
+  event.preventDefault();
+  const searchTerm = ('#search-term').val();
+  event.target.reset();
+
+  const fetchVideos = function(searchTerm, callback) {
+    const decoratedVideos = decorateResponse(response);
+    addVideosToStore(decoratedVideos);
+    render();
+    };
+  });
+};
+
 
 // When DOM is ready:
 $(function() {
+  handleFormSubmit();
   // TASK:
   // 1. Run `handleFormSubmit` to bind the event listener to the DOM
 });
